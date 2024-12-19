@@ -147,8 +147,8 @@ document.getElementById("pay-button").addEventListener("click", async () => {
     const paymentAmount = getPaymentAmount(); // Obtiene el valor como string limpio
 
     //Generar token
-    const publicKey = '25bd67a9d26a7c74c410c7707db652fd'
-    const privateKey = '0d03d6facb8df947a0ddd5b7608dca7c';
+    const publicKey = 'PUBLIC_KEY'
+    const privateKey = 'PRIVATE_KEY';
     const token = btoa(`${publicKey}:${privateKey}`)
 
     try {
