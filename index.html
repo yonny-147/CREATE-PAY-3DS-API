@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proceso de Pago</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 flex items-center justify-center min-h-screen">
+    <div class="bg-white p-8 rounded-lg shadow-md w-full max-w-md">
+        <h1 class="text-2xl font-bold mb-6 text-center">Formulario de Pago</h1>
+        <form id="payment-form">
+            <div class="mb-4">
+                <label for="name" class="block text-sm font-medium text-gray-700">Nombre</label>
+                <input type="text" id="name" class="mt-1 block w-full border border-gray-300 rounded-md p-2" required>
+            </div>
+            <div class="mb-4">
+                <label for="lastName" class="block text-sm font-medium text-gray-700">Apellido</label>
+                <input type="text" id="lastName" class="mt-1 block w-full border border-gray-300 rounded-md p-2" required>
+            </div>
+            <div class="mb-4">
+                <label for="doc-type" class="block text-sm font-medium text-gray-700">Tipo de Documento</label>
+                <select id="doc-type" class="mt-1 block w-full border border-gray-300 rounded-md p-2" required>
+                    <option value="CC">Cédula de Ciudadanía</option>
+                    <option value="CE">Cédula de Extranjería</option>
+                </select>
+            </div>
+            <div class="mb-4">
+                <label for="doc-number" class="block text-sm font-medium text-gray-700">Número de Documento</label>
+                <input type="text" id="doc-number" class="mt-1 block w-full border border-gray-300 rounded-md p-2" required>
+            </div>
+            <div class="mb-4">
+                <label for="email" class="block text-sm font-medium text-gray-700">Correo Electrónico</label>
+                <input type="email" id="email" class="mt-1 block w-full border border-gray-300 rounded-md p-2" required>
+            </div>
+            <div class="mb-4">
+                <label for="phone" class="block text-sm font-medium text-gray-700">Teléfono</label>
+                <input type="tel" id="phone" class="mt-1 block w-full border border-gray-300 rounded-md p-2" required>
+            </div>
+            <div class="mb-4">
+                <label for="amount" class="block text-sm font-medium text-gray-700">Monto</label>
+                <input type="text" id="amount" class="mt-1 block w-full border border-gray-300 rounded-md p-2" required>
+            </div>
+            <div class="mb-4">
+                <label for="card-number" class="block text-sm font-medium text-gray-700">Número de Tarjeta</label>
+                <input type="text" id="card-number" class="mt-1 block w-full border border-gray-300 rounded-md p-2" required>
+            </div>
+            <div class="mb-4">
+                <label for="expiration-month" class="block text-sm font-medium text-gray-700">Mes de Expiración</label>
+                <input type="text" id="expiration-month" class="mt-1 block w-full border border-gray-300 rounded-md p-2" required>
+            </div>
+            <div class="mb-4">
+                <label for="expiration-year" class="block text-sm font-medium text-gray-700">Año de Expiración</label>
+                <input type="text" id="expiration-year" class="mt-1 block w-full border border-gray-300 rounded-md p-2" required>
+            </div>
+            <div class="mb-4">
+                <label for="cvv" class="block text-sm font-medium text-gray-700">CVV</label>
+                <input type="text" id="cvv" class="mt-1 block w-full border border-gray-300 rounded-md p-2" required>
+            </div>
+            <div class="mb-4">
+                <label for="dues" class="block text-sm font-medium text-gray-700">Cuotas</label>
+                <input type="text" id="dues" class="mt-1 block w-full border border-gray-300 rounded-md p-2" required>
+            </div>
+            <button type="button" id="pay-button" class="w-full bg-blue-500 text-white font-bold py-2 rounded hover:bg-blue-600">Pagar</button>
+        </form>
+    </div>
+    <script src="/api/createPay.js"></script>
+    <script src="https://multimedia.epayco.co/general/3DS/validateThreeds.min.js"></script>
+</body>
+</html>
