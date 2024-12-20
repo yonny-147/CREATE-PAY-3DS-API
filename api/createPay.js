@@ -106,19 +106,17 @@ async function processPayment(paymentData) {
       };
       // En este punto enviara el objeto data3DS al método de validación
       validate3ds(data3DS);
-
-      window.addEventListener("message", function (e) {
-        if (e.data.success || e.data.message) {
-          console.log(
-            "Se obtuvo la ref_payco. Consulta la transacción para verificar su estado."
-          );
-          // Aquí puedes implementar la lógica para consultar el estado dela transacción y continuar con el flujo
-          {
-            alert(`Pago ${transactionData.estado}`);
-          }
-        }
-      });
     }
+      const refPayco = transactionData.ref_payco;
+      const state = transactionData.estado;
+      const bankName = transactionData.banco;
+      const amount = transactionData.valor;
+      const description = transactionData.descripcion;
+      const date = transactionData.fecha;
+      const bill =  transactionData.factura;
+ 
+      const urlResponse = `http://127.0.0.1:5500/src/respuesta.html?ref_payco=${refPayco}&estado=${state}&banco=${bankName}&valor=${amount}&descripcion=${description}&fecha=${date}&factura=${bill}`;
+      window.location.href = urlResponse;
     return data;
   } else {
     throw new Error(data.message || "Error al procesar el pago");
@@ -147,8 +145,8 @@ document.getElementById("pay-button").addEventListener("click", async () => {
     const paymentAmount = getPaymentAmount(); // Obtiene el valor como string limpio
 
     //Generar token
-    const publicKey = 'PUBLIC_KEY'
-    const privateKey = 'PRIVATE_KEY';
+    const publicKey = '25bd67a9d26a7c74c410c7707db652fd'
+    const privateKey = '0d03d6facb8df947a0ddd5b7608dca7c';
     const token = btoa(`${publicKey}:${privateKey}`)
 
     try {
@@ -195,6 +193,8 @@ document.getElementById("pay-button").addEventListener("click", async () => {
       cardExpMonth: expirationMonth,
       cardCvc: cvv,
       dues: dues,
+      urlResponse: 'http://127.0.0.1:5500/src/respuesta.html',
+      urlConfirmation: 'https://webhook.site/dfc13dce-0581-4399-aa1f-2c975f71fc27',
       _cardTokenId: cardTokenId
     });
   } catch (error) {
